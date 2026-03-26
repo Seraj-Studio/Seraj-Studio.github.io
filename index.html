@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Seraj Studio — Independent Unity game developer and Asset Store tool creator. Building games and tools that guide, inspire, and endure.">
+  <meta name="theme-color" content="#06060a">
+
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/work.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/contact.css">
+
+  <title>Seraj Studio — The Light That Guides the Way</title>
+</head>
+
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav id="navbar" class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__container">
+
+      <a href="#hero" class="navbar__logo" aria-label="Seraj Studio — back to top">
+        <img src="logo.svg" class="navbar__logo-svg" width="36" height="36" alt="" aria-hidden="true">
+        <span class="navbar__logo-text">Seraj Studio</span>
+      </a>
+
+      <div class="navbar__links">
+        <a href="#work" class="navbar__link">Work</a>
+        <a href="#about" class="navbar__link">About</a>
+        <a href="#contact" class="navbar__link">Contact</a>
+      </div>
+
+      <button class="navbar__toggle" id="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
+        aria-controls="navbar-mobile-menu">
+        <div class="navbar__hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+
+  </nav>
+
+  <!-- Mobile menu is OUTSIDE <nav> to avoid backdrop-filter containing-block trap -->
+  <div class="navbar__mobile-menu" id="navbar-mobile-menu" aria-hidden="true">
+    <a href="#work" class="navbar__mobile-link">Work</a>
+    <a href="#about" class="navbar__mobile-link">About</a>
+    <a href="#contact" class="navbar__mobile-link">Contact</a>
+  </div>
+
+  <main id="main">
+
+    <!-- ====== HERO ====== -->
+    <section id="hero" class="section-hero" aria-label="Seraj Studio introduction">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero__gradient-overlay" aria-hidden="true"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">
+          <span class="hero__title-line">Crafting</span>
+          <span class="hero__title-line hero__title-accent">Digital Light</span>
+        </h1>
+        <p class="hero__tagline">
+          Building games and tools that guide,<br class="hero__tagline-br">
+          inspire, and endure.
+        </p>
+        <div class="hero__ctas">
+          <a href="#work" class="btn btn--primary">Explore Our Work</a>
+          <a href="#contact" class="btn btn--outline">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <span class="hero__scroll-label">Scroll</span>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ====== WORK ====== -->
+    <section id="work" class="section-work" aria-label="Our work">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-label">What We Build</span>
+          <h2 class="section-title">Our Work</h2>
+          <p class="section-subtitle">Unity tools crafted for the Asset Store, and games built with the same care.</p>
+        </div>
+
+        <!--<div class="work__filters reveal">
+          <button class="filter-btn filter-btn--active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="tools">Tools</button>
+          <button class="filter-btn" data-filter="games">Games</button>
+        </div>-->
+
+        <div class="work__grid reveal-stagger" id="work-grid">
+
+          <!-- Card: Hierarchy Pro (Tool) -->
+          <!--<article class="card" data-category="tools">
+            <div class="card__media">
+              <div class="card__visual card__visual--1"></div>
+              <div class="card__icon" aria-hidden="true">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <rect x="4" y="7" width="12" height="3" rx="1.5" fill="currentColor" />
+                  <rect x="10" y="14" width="10" height="2.5" rx="1.25" fill="currentColor" opacity=".75" />
+                  <rect x="10" y="20" width="10" height="2.5" rx="1.25" fill="currentColor" opacity=".75" />
+                  <rect x="16" y="27" width="10" height="2.5" rx="1.25" fill="currentColor" opacity=".5" />
+                  <line x1="7" y1="10" x2="7" y2="29" stroke="currentColor" stroke-width="1.5" opacity=".35" />
+                  <line x1="7" y1="15.25" x2="11" y2="15.25" stroke="currentColor" stroke-width="1.5" opacity=".35" />
+                  <line x1="7" y1="21.25" x2="11" y2="21.25" stroke="currentColor" stroke-width="1.5" opacity=".35" />
+                  <line x1="13" y1="28.25" x2="17" y2="28.25" stroke="currentColor" stroke-width="1.5" opacity=".35" />
+                </svg>
+              </div>
+              <span class="card__badge card__badge--tool">Unity Tool</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Hierarchy Pro</h3>
+              <p class="card__desc">Transform the Unity hierarchy window with color-coded grouping, custom icons, and
+                per-object visibility toggles. Built for teams managing large, complex scenes.</p>
+              <div class="card__footer">
+                <div class="card__tags">
+                  <span class="card__tag">Editor Extension</span>
+                  <span class="card__tag">C#</span>
+                </div>
+                <a href="#" class="card__link">Details <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>-->
+
+          <!-- Card: Build Pipeline Toolkit (Tool) -->
+          <!--<article class="card" data-category="tools">
+            <div class="card__media">
+              <div class="card__visual card__visual--2"></div>
+              <div class="card__icon" aria-hidden="true">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <circle cx="18" cy="18" r="10" stroke="currentColor" stroke-width="1.5" />
+                  <circle cx="18" cy="18" r="3" fill="currentColor" />
+                  <line x1="18" y1="5" x2="18" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  <line x1="18" y1="27" x2="18" y2="31" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" />
+                  <line x1="5" y1="18" x2="9" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  <line x1="27" y1="18" x2="31" y2="18" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" />
+                  <line x1="8.5" y1="8.5" x2="11.3" y2="11.3" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" opacity=".6" />
+                  <line x1="24.7" y1="24.7" x2="27.5" y2="27.5" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" opacity=".6" />
+                </svg>
+              </div>
+              <span class="card__badge card__badge--tool">Unity Tool</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Build Pipeline Toolkit</h3>
+              <p class="card__desc">Automate Unity builds with configurable per-platform settings, version bumping, and
+                structured build reports. Ship faster without touching the Build Settings window.</p>
+              <div class="card__footer">
+                <div class="card__tags">
+                  <span class="card__tag">Automation</span>
+                  <span class="card__tag">C#</span>
+                </div>
+                <a href="#" class="card__link">Details <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>-->
+
+          <!-- Card: ScriptableObject Architect (Tool) -->
+          <!--   <article class="card" data-category="tools">
+            <div class="card__media">
+              <div class="card__visual card__visual--3"></div>
+              <div class="card__icon" aria-hidden="true">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <circle cx="18" cy="9" r="3" stroke="currentColor" stroke-width="1.5" />
+                  <circle cx="9" cy="27" r="3" stroke="currentColor" stroke-width="1.5" />
+                  <circle cx="27" cy="27" r="3" stroke="currentColor" stroke-width="1.5" />
+                  <line x1="18" y1="12" x2="9" y2="24" stroke="currentColor" stroke-width="1.5" opacity=".5" />
+                  <line x1="18" y1="12" x2="27" y2="24" stroke="currentColor" stroke-width="1.5" opacity=".5" />
+                  <line x1="12" y1="27" x2="24" y2="27" stroke="currentColor" stroke-width="1.5" opacity=".5" />
+                  <circle cx="18" cy="18" r="2" fill="currentColor" opacity=".4" />
+                </svg>
+              </div>
+              <span class="card__badge card__badge--tool">Unity Tool</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">ScriptableObject Architect</h3>
+              <p class="card__desc">A visual graph editor for designing and connecting ScriptableObject-based
+                architectures. Build data-driven game systems with drag-and-drop clarity and runtime debug overlays.</p>
+              <div class="card__footer">
+                <div class="card__tags">
+                  <span class="card__tag">Architecture</span>
+                  <span class="card__tag">C#</span>
+                </div>
+                <a href="#" class="card__link">Details <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>-->
+
+          <!-- Card: Ember Drift (Game) -->
+          <!--  <article class="card" data-category="games">
+            <div class="card__media">
+              <div class="card__visual card__visual--4"></div>
+              <div class="card__icon" aria-hidden="true">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <path d="M18 5c0 0-7 5.5-7 13a7 7 0 0014 0c0-3.5-2.5-6-2.5-9 0 0-1 3.5-2.5 4.5-1-2.5-2-8.5-2-8.5z"
+                    fill="currentColor" opacity=".85" />
+                  <path
+                    d="M14.5 24c0 2 1.6 3.5 3.5 3.5s3.5-1.5 3.5-3.5c0-1.3-.9-2.2-1.75-2.6 0 .9-.9 1.7-1.75 1.7S16.25 22.3 16.25 21.4c-.85.4-1.75 1.3-1.75 2.6z"
+                    fill="currentColor" opacity=".45" />
+                </svg>
+              </div>
+              <span class="card__badge card__badge--game">Unity Game</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Ember Drift</h3>
+              <p class="card__desc">A meditative puzzle game where you guide glowing embers through wind-sculpted canyon
+                environments. Each level is procedurally shaped with a hand-tuned emotional arc.</p>
+              <div class="card__footer">
+                <div class="card__tags">
+                  <span class="card__tag">Puzzle</span>
+                  <span class="card__tag">Unity 6</span>
+                </div>
+                <a href="#" class="card__link">Details <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>-->
+
+          <!-- Card: Vault Zero (Game) -->
+          <!-- <article class="card" data-category="games">
+            <div class="card__media">
+              <div class="card__visual card__visual--5"></div>
+              <div class="card__icon" aria-hidden="true">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <rect x="7" y="11" width="22" height="16" rx="2" stroke="currentColor" stroke-width="1.5" />
+                  <circle cx="18" cy="19" r="4" stroke="currentColor" stroke-width="1.5" />
+                  <circle cx="18" cy="19" r="1.5" fill="currentColor" />
+                  <line x1="18" y1="11" x2="18" y2="8" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" />
+                  <line x1="14" y1="19" x2="11" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    opacity=".5" />
+                  <line x1="22" y1="19" x2="25" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    opacity=".5" />
+                </svg>
+              </div>
+              <span class="card__badge card__badge--game">Unity Game</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Vault Zero</h3>
+              <p class="card__desc">A minimalist action platformer set in a world of stark geometric forms. Master
+                momentum-based movement to breach five increasingly abstract vaults before the countdown ends.</p>
+              <div class="card__footer">
+                <div class="card__tags">
+                  <span class="card__tag">Platformer</span>
+                  <span class="card__tag">Unity 6</span>
+                </div>
+                <a href="#" class="card__link">Details <span aria-hidden="true">→</span></a>
+              </div>
+            </div>    
+          </article>-->
+
+        </div><!-- /.work__grid -->
+      </div><!-- /.container -->
+    </section>
+
+    <!-- ====== ABOUT ====== -->
+    <section id="about" class="section-about" aria-label="About Seraj Studio">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-label">The Studio</span>
+          <h2 class="section-title">About Seraj Studio</h2>
+        </div>
+
+        <p class="about__lead reveal">
+          Seraj Studio is an independent game development studio specializing in Unity games and editor tooling for the
+          Unity Asset Store. We believe great software should feel inevitable — like it was always meant to exist
+          exactly this way.
+        </p>
+
+        <div class="about__grid">
+          <div class="about__text-col">
+            <div class="about__block reveal">
+              <h3 class="about__block-title">Mission</h3>
+              <p class="about__block-body">We build Unity games that prioritize feel, clarity, and emotional resonance —
+                and we build Asset Store tools that make other developers' lives genuinely easier. Every release is
+                something we would want to use ourselves.</p>
+            </div>
+            <div class="about__block reveal">
+              <h3 class="about__block-title">Vision</h3>
+              <p class="about__block-body">A future where independent developers have access to the same quality of
+                tooling and infrastructure as large studios — and where the games that result are stranger, more
+                personal, and more alive than anything a committee would greenlight.</p>
+            </div>
+          </div>
+
+          <div class="about__values-col">
+            <h3 class="about__values-title reveal">Values</h3>
+            <ul class="values-list reveal-stagger">
+
+              <li class="value-item">
+                <div class="value-item__icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M9 1.5L11 6.5H16.5L12 9.8L14 15L9 11.8L4 15L6 9.8L1.5 6.5H7L9 1.5Z" fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="value-item__text">
+                  <h4 class="value-item__title">Craft First</h4>
+                  <p>We take time to make things feel right, not just work right. Polish is the difference between a
+                    tool and a good tool.</p>
+                </div>
+              </li>
+
+              <li class="value-item">
+                <div class="value-item__icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <circle cx="9" cy="7" r="3" stroke="currentColor" stroke-width="1.5" />
+                    <path d="M3 16c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div class="value-item__text">
+                  <h4 class="value-item__title">Developer Empathy</h4>
+                  <p>Our tools are built by developers who feel the same pain they solve. Every feature exists because
+                    we needed it first.</p>
+                </div>
+              </li>
+
+              <li class="value-item">
+                <div class="value-item__icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <rect x="2" y="5" width="14" height="2" rx="1" fill="currentColor" />
+                    <rect x="2" y="9" width="10" height="2" rx="1" fill="currentColor" opacity=".65" />
+                    <rect x="2" y="13" width="7" height="2" rx="1" fill="currentColor" opacity=".35" />
+                  </svg>
+                </div>
+                <div class="value-item__text">
+                  <h4 class="value-item__title">Honest Simplicity</h4>
+                  <p>Interfaces should reveal complexity only when needed. Start simple, grow with the user — never the
+                    other way around.</p>
+                </div>
+              </li>
+
+              <li class="value-item">
+                <div class="value-item__icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M9 2v10M5 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <line x1="3" y1="16" x2="15" y2="16" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div class="value-item__text">
+                  <h4 class="value-item__title">Ship and Iterate</h4>
+                  <p>Done and in players' hands beats perfect and unreleased. We release early, listen carefully, and
+                    improve consistently.</p>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+        <div class="about__signature reveal" aria-label="Studio tagline">
+          <span class="about__sig-line" aria-hidden="true"></span>
+          <span class="about__sig-text">Seraj — the light that guides the way.</span>
+          <span class="about__sig-line" aria-hidden="true"></span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====== CONTACT ====== -->
+    <section id="contact" class="section-contact" aria-label="Contact Seraj Studio">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-label">Get in Touch</span>
+          <h2 class="section-title">Contact</h2>
+          <p class="section-subtitle">Questions about a tool, a collaboration idea, or just want to say hello?</p>
+        </div>
+
+        <div class="contact__grid">
+
+          <!-- Form -->
+          <div class="contact__form-wrap reveal">
+            <form class="contact-form" id="contact-form" novalidate>
+
+              <div class="form-field">
+                <input type="text" id="f-name" name="name" class="form-input" placeholder=" " required
+                  autocomplete="name">
+                <label for="f-name" class="form-label">Your Name</label>
+              </div>
+
+              <div class="form-field">
+                <input type="email" id="f-email" name="email" class="form-input" placeholder=" " required
+                  autocomplete="email">
+                <label for="f-email" class="form-label">Email Address</label>
+              </div>
+
+              <div class="form-field">
+                <input type="text" id="f-subject" name="subject" class="form-input" placeholder=" " autocomplete="off">
+                <label for="f-subject" class="form-label">Subject (optional)</label>
+              </div>
+
+              <div class="form-field">
+                <textarea id="f-message" name="message" class="form-input form-textarea" placeholder=" " required
+                  rows="5"></textarea>
+                <label for="f-message" class="form-label">Message</label>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--full" id="form-submit-btn">
+                <span class="btn__label">Send Message</span>
+                <span class="btn__spinner" aria-hidden="true"></span>
+              </button>
+
+              <!-- Success/error feedback -->
+              <div class="form-feedback" id="form-feedback" role="alert" aria-live="polite"></div>
+            </form>
+          </div>
+
+          <!-- Info -->
+          <div class="contact__info reveal">
+            <div class="contact__info-item">
+              <span class="contact__info-label">Email</span>
+              <a class="contact__email" href="mailto:serajstuido@gmail.com">serajstuido@gmail.com</a>
+            </div>
+            <div class="contact__info-item">
+              <span class="contact__info-label">Based in</span>
+              <span class="contact__info-value">Remote, Worldwide</span>
+            </div>
+            <div class="contact__info-item">
+              <span class="contact__info-label">Response time</span>
+              <span class="contact__info-value">Within 48 hours</span>
+            </div>
+            <div class="contact__note">
+              <p>Whether you're interested in our Asset Store tools, have a collaboration idea, or just want to connect
+                — the inbox is always open.</p>
+            </div>
+          </div>
+
+        </div><!-- /.contact__grid -->
+      </div><!-- /.container -->
+    </section>
+
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__inner">
+        <a href="#hero" class="site-footer__brand" aria-label="Back to top">
+          <span class="site-footer__brand-text">Seraj Studio</span>
+        </a>
+        <p class="site-footer__copy">
+          &copy; <span id="footer-year">2025</span> Seraj Studio. All rights reserved.
+        </p>
+        <nav class="site-footer__nav" aria-label="Footer links">
+          <a href="#work" class="site-footer__link">Work</a>
+          <a href="#about" class="site-footer__link">About</a>
+          <a href="#contact" class="site-footer__link">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+
+  <!-- App scripts (dependency order) -->
+  <script src="js/three-scene.js"></script>
+  <script src="js/scroll-reveal.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,338 @@
+/* =========================================================
+   main.css — Design tokens, reset, global base styles
+   ========================================================= */
+
+/* ── Custom Properties ── */
+:root {
+  /* Backgrounds */
+  --bg-base: #06060a;
+  --bg-surface: #0d0d15;
+  --bg-elevated: #131320;
+  --bg-overlay: rgba(6, 6, 10, 0.92);
+
+  /* Brand accents (from logo gradient) */
+  --fire: #DE4926;
+  --gold: #F3C748;
+  --amber: #E8832A;
+
+  /* Glow shadows */
+  --glow-fire-xs: 0 0 6px rgba(222, 73, 38, 0.40);
+  --glow-fire-sm: 0 0 14px rgba(222, 73, 38, 0.35);
+  --glow-fire-md: 0 0 28px rgba(222, 73, 38, 0.25);
+  --glow-fire-lg: 0 0 50px rgba(222, 73, 38, 0.18);
+  --glow-gold-xs: 0 0 6px rgba(243, 199, 72, 0.45);
+  --glow-gold-sm: 0 0 14px rgba(243, 199, 72, 0.40);
+  --glow-gold-md: 0 0 28px rgba(243, 199, 72, 0.30);
+
+  /* Text */
+  --text-primary: #F0EDE8;
+  --text-secondary: #8A8499;
+  --text-muted: #4a4560;
+
+  /* Borders */
+  --border-subtle: rgba(243, 199, 72, 0.07);
+  --border-dim: rgba(243, 199, 72, 0.13);
+  --border-normal: rgba(243, 199, 72, 0.22);
+  --border-active: rgba(222, 73, 38, 0.55);
+
+  /* Brand gradient */
+  --gradient-brand: linear-gradient(135deg, #DE4926 0%, #E8832A 50%, #F3C748 100%);
+  --gradient-brand-text: linear-gradient(90deg, #DE4926, #F3C748);
+
+  /* Typography */
+  --font: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+
+  /* Navbar height (used for scroll offset) */
+  --nav-h: 72px;
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-pad: clamp(1.25rem, 5vw, 3rem);
+  --section-pad-y: clamp(5rem, 10vh, 7.5rem);
+
+  /* Radius */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+
+  /* Easing */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.45, 0, 0.15, 1);
+}
+
+/* ── Modern CSS Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul {
+  list-style: none;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+/* ── Anchor offset for fixed nav ── */
+section[id] {
+  scroll-margin-top: calc(var(--nav-h) + 1.5rem);
+}
+
+/* ── Container ── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 52px;
+  padding: 0 2rem;
+  border-radius: var(--r-md);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out),
+    opacity 200ms ease;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.btn--primary {
+  background: var(--gradient-brand);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(222, 73, 38, 0.30);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(222, 73, 38, 0.45),
+    var(--glow-fire-sm);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(222, 73, 38, 0.25);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1.5px solid rgba(222, 73, 38, 0.5);
+}
+
+.btn--outline:hover {
+  border-color: var(--fire);
+  color: var(--gold);
+  background: rgba(222, 73, 38, 0.07);
+  transform: translateY(-2px);
+  box-shadow: var(--glow-fire-xs);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* Submit button spinner state */
+.btn--loading .btn__label {
+  opacity: 0;
+}
+
+.btn--loading .btn__spinner {
+  opacity: 1;
+}
+
+.btn--loading {
+  pointer-events: none;
+}
+
+.btn__spinner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 150ms;
+  animation: spin 0.7s linear infinite;
+}
+
+/* ── Section header ── */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+
+.section-title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  max-width: 540px;
+  margin-inline: auto;
+  line-height: 1.7;
+}
+
+/* ── Gradient text utility ── */
+.grad-text {
+  background: var(--gradient-brand-text);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ── Site footer ── */
+.site-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 2.5rem 0;
+  margin-top: 0;
+}
+
+.site-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer__brand-text {
+  font-size: 1rem;
+  font-weight: 700;
+  background: var(--gradient-brand-text);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  transition: opacity 200ms;
+}
+
+.site-footer__brand:hover .site-footer__brand-text {
+  opacity: 0.8;
+}
+
+.site-footer__copy {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.site-footer__nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.site-footer__link {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: color 200ms;
+}
+
+.site-footer__link:hover {
+  color: var(--gold);
+}
+
+@media (max-width: 640px) {
+  .site-footer__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

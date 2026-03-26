@@ -1,0 +1,180 @@
+/* =========================================================
+   animations.css — Keyframes and scroll-reveal system
+   ========================================================= */
+
+/* ── Keyframes ── */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes navbarDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.55; }
+  50%       { opacity: 1.00; }
+}
+
+@keyframes chevronBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+@keyframes gradientBorderSpin {
+  to { --angle: 360deg; }
+}
+
+/* ── Scroll Reveal System ── */
+/*
+   JS adds .reveal--visible to .reveal elements when they enter the viewport.
+   Stagger: .reveal-stagger children get --stagger-idx set by JS.
+*/
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity  700ms var(--ease-out),
+    transform 700ms var(--ease-out);
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger delays for direct children of .reveal-stagger */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity  650ms var(--ease-out),
+    transform 650ms var(--ease-out);
+  transition-delay: calc(var(--stagger-idx, 0) * 90ms);
+}
+
+.reveal-stagger.reveal--visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Hero entry animations ── */
+/*
+   Triggered by JS adding .hero--loaded to .section-hero
+*/
+
+.hero__eyebrow,
+.hero__title,
+.hero__tagline,
+.hero__ctas,
+.hero__scroll-hint {
+  opacity: 0;
+}
+
+.section-hero.hero--loaded .hero__eyebrow {
+  animation: fadeSlideUp 700ms var(--ease-out) 100ms forwards;
+}
+.section-hero.hero--loaded .hero__title {
+  animation: fadeSlideUp 800ms var(--ease-out) 250ms forwards;
+}
+.section-hero.hero--loaded .hero__tagline {
+  animation: fadeSlideUp 700ms var(--ease-out) 450ms forwards;
+}
+.section-hero.hero--loaded .hero__ctas {
+  animation: fadeSlideUp 650ms var(--ease-out) 620ms forwards;
+}
+.section-hero.hero--loaded .hero__scroll-hint {
+  animation: fadeSlideUp 600ms var(--ease-out) 850ms forwards;
+}
+
+/* ── Navbar ── */
+.navbar {
+  animation: navbarDrop 600ms var(--ease-out) forwards;
+}
+
+/* ── Scroll hint chevron bounce ── */
+.section-hero.hero--loaded .hero__scroll-hint svg {
+  animation: chevronBounce 1.6s ease-in-out 1500ms infinite;
+}
+
+/* ── Hero title gradient animation ── */
+.hero__title-accent {
+  background: linear-gradient(90deg, #DE4926, #E8832A, #F3C748, #E8832A, #DE4926);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradientShift 5s ease-in-out infinite;
+}
+
+/* ── Card glow breath (applied on hover via CSS) ── */
+@keyframes cardGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(222, 73, 38, 0); }
+  50%       { box-shadow: var(--glow-fire-sm); }
+}
+
+/* ── Reduced motion overrides ── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero__eyebrow,
+  .hero__title,
+  .hero__tagline,
+  .hero__ctas,
+  .hero__scroll-hint {
+    opacity: 1;
+    animation: none;
+  }
+
+  .hero__title-accent {
+    animation: none;
+    background-size: 100%;
+  }
+
+  .section-hero.hero--loaded .hero__scroll-hint svg {
+    animation: none;
+  }
+}
